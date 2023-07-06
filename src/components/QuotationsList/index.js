@@ -3,7 +3,7 @@ import {FlatList,
     View, 
     Text, 
     TouchableOpacity } from "react-native";
-import QuotationsItems from "./QuatationsItems";
+import QuotationsItems from "../QuotationsItems";
 import styles from "./styles";
 
 export default function QuotationsList(props){
@@ -33,7 +33,8 @@ export default function QuotationsList(props){
             </TouchableOpacity>
         </View>
             <FlatList
-                style={styles.listQuotationBitcoins}
+                inverted 
+                style={styles.listQuotationCoins}
                 data={props.listTransactions}
                 renderItem={({ item }) => {
                     return <QuotationsItems 

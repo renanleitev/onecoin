@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         fontSize: 12,
         textTransform: 'uppercase',
     },
-    listQuotationCoins:{
-        marginTop: 10,
+    listQuotationBitcoins:{
+        paddingTop: 10,
         width: "100%",
     },
 });

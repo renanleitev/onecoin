@@ -1,4 +1,4 @@
-# OneBitCoin
+# OneCoin
 
 Aplicativo para testes, feito em React-Native, para visualizar a cotação do Dolar (USD).
 
@@ -18,6 +18,10 @@ Aplicativo para testes, feito em React-Native, para visualizar a cotação do Do
 ## Para reiniciar o projeto
 
     Bastar apertar a tecla 'r' no terminal
+
+## API utilizada para consumir os dados
+
+    https://docs.awesomeapi.com.br/api-de-moedas
 
 ## TODO
 

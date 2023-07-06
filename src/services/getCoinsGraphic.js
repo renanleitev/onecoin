@@ -1,13 +1,9 @@
-import subtractDaysFromNow from "./subtractDaysFromNow";
-
-export default async function getCoinsGraphic(url, days) {
-    let qtdDays = days;
+export default async function getCoinsGraphic(url) {
     let response = await fetch(url);
     let returnApi = await response.json();
     const lista = [];
     returnApi.forEach((element) => {
-        lista.push({ id: subtractDaysFromNow(qtdDays), value: element['high'] });
-        qtdDays--;
+        lista.push(Number.parseFloat(element['high']));
     });
-    return lista;
+    return lista.reverse();
 }
