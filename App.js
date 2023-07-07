@@ -1,7 +1,8 @@
 import { StyleSheet, 
     StatusBar, 
     SafeAreaView, 
-    Platform} from 'react-native';
+    Platform,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import CurrentPrice from './src/components/CurrentPrice';
 import HistoryGraphic from './src/components/HistoryGraphic';
@@ -53,7 +54,10 @@ export default function App() {
             backgroundColor='gray' 
             barStyle='light-content'/>
             <CurrentPrice coin={coin} days={days}/>
-            <HistoryGraphic coin={coin} infoDataGraphic={coinsGraphicList}/>
+            <HistoryGraphic 
+            coin={coin} 
+            days={days}
+            infoDataGraphic={coinsGraphicList}/>
             <CoinsList   
             filterCoin={updateCoin} 
             listTransactions={coinsList}/>
