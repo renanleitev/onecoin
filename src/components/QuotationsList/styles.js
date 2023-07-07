@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
     buttonQuery: {
         width: 50,
         height: 30,
-        backgroundColor: 'red',
+        backgroundColor: 'lightgray',
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },
     textButtonQuery: {
-        color: '#fff',
+        color: 'black',
         fontWeight: 'bold',
         fontSize: 12,
         textTransform: 'uppercase',

@@ -1,52 +1,58 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { View, Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 export default function HistoryGraphic(props) {
+    const [decimalPlaces, setDecimalPlaces] = useState(4);
+    useEffect(() => {
+        switch (props.coin) {
+            case 'BTC-BRL':
+                setDecimalPlaces(0);
+                break;
+            default:
+                setDecimalPlaces(4);
+                break;
+        }
+    }, [props.coin]);
     return (
         <View>
             <LineChart
-                style={{right: 30}}
                 data={{
                     datasets: [
                         {
                             data: props.infoDataGraphic
                         },
-                        {
-                            data: [props.infoDataGraphic[0]] // min
-                        },
-                        {
-                            data: [props.infoDataGraphic.slice(-1)] // max
-                        },
                     ]
                 }}
                 width={Dimensions.get("window").width} // from react-native
                 height={220}
-                // segments={2}
                 yAxisLabel="$"
-                yAxisSuffix=".00"
-                withHorizontalLabels={false}
+                withHorizontalLabels={true}
                 withVerticalLines={false}
                 yLabelsOffset={1}
-                withVerticalLabels={false}
+                withVerticalLabels={true}
                 chartConfig={{
                     backgroundColor: "#000000",
                     backgroundGradientFrom: "#232323",
                     backgroundGradientTo: "#3F3F3F",
-                    decimalPlaces: 0, // optional, defaults to 2dp
+                    decimalPlaces: decimalPlaces, // para definir quantas casas decimais tem no eixo y
                     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                     labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                     propsForDots: {
-                        r: "1",
-                        strokeWidth: "1",
+                        r: "0",
+                        strokeWidth: "2",
                         stroke: "#f50d41",
                     },
+                    fontSize:10,
                     backgroundGradientFrom: 'black',
                     backgroundGradientTo: 'black',
-                    fillShadowGradient:'red',
-                    fillShadowGradientOpacity:1,
+                    fillShadowGradient: 'white',
+                    fillShadowGradientOpacity: 1,
+                    // propsForLabels: {
+                    //     fontSize:9, // para mudar a fonte dos labels (eixo x e y)
+                    // }
                 }}
-                bezier//ondas suaves do grafico
+                bezier
             />
         </View>
     )

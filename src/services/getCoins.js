@@ -1,6 +1,6 @@
 import subtractDaysFromNow from "./subtractDaysFromNow";
 
-export default async function getCoins(url, days){
+export default async function getCoins(url){
     let qtdDays = 0;
     let response = await fetch(url);
     let returnApi = await response.json();

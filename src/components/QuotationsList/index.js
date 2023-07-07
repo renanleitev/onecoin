@@ -13,23 +13,23 @@ export default function QuotationsList(props){
         <View style={styles.filters}>
             <TouchableOpacity
             style={styles.buttonQuery}
-            onPress={() => daysQuery(1)}>
-                <Text style={styles.textButtonQuery}>1D</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-            style={styles.buttonQuery}
             onPress={() => daysQuery(7)}>
                 <Text style={styles.textButtonQuery}>7D</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={styles.buttonQuery}
-            onPress={() => daysQuery(15)}>
-                <Text style={styles.textButtonQuery}>15D</Text>
+            onPress={() => daysQuery(30)}>
+                <Text style={styles.textButtonQuery}>1M</Text>
             </TouchableOpacity>
             <TouchableOpacity
             style={styles.buttonQuery}
-            onPress={() => daysQuery(21)}>
-                <Text style={styles.textButtonQuery}>21D</Text>
+            onPress={() => daysQuery(180)}>
+                <Text style={styles.textButtonQuery}>6M</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+            style={styles.buttonQuery}
+            onPress={() => daysQuery(365)}>
+                <Text style={styles.textButtonQuery}>1Y</Text>
             </TouchableOpacity>
         </View>
             <FlatList
@@ -38,6 +38,7 @@ export default function QuotationsList(props){
                 data={props.listTransactions}
                 renderItem={({ item }) => {
                     return <QuotationsItems 
+                    coin={props.coin}
                     valor={item.value} 
                     data={item.id}/>;
                 }}
