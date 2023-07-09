@@ -21,7 +21,7 @@ export default function QuotationsList(props) {
             <FlatList
                 inverted
                 style={styles.listQuotationCoins}
-                data={props.listTransactions}
+                data={props.coinsList}
                 renderItem={({ item }) => {
                     return <QuotationsItems
                         coin={props.coin}

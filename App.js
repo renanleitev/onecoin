@@ -5,6 +5,7 @@ import {
     Platform,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import ToastManager, { Toast } from 'toastify-react-native';
 import CurrentPrice from './src/components/CurrentPrice';
 import HistoryGraphic from './src/components/HistoryGraphic';
 import CoinsList from './src/components/CoinsList';
@@ -33,8 +34,10 @@ export default function App() {
     const [days, setDays] = useState(defaultDays);
     // Se deve ou não realizar a consulta na API
     const [updateData, setUpdateData] = useState(true);
-    // Se houver erro na consulta
-    const [error, setError] = useState(false);
+    // Para exibir mensagem de erro
+    const showToasts = () => {
+        Toast.error('Consulta inválida');
+    }
     // Para atualizar o tipo da primeira moeda
     function updateFirstCoin(coin) {
         setFirstCoin(coin);
@@ -53,14 +56,12 @@ export default function App() {
     }
     // Para atualizar os dados da moeda e o gráfico
     useEffect(() => {
-        getCoins(getUrl(firstCoin, secondCoin, defaultDays)).then((data) => {
-            setError(false);
+        getCoins(getUrl(firstCoin, secondCoin, days)).then((data) => {
             setCoinsList(data);
-        }).catch(() => setError(true));
+        }).catch(() => showToasts());
         getCoinsGraphic(getUrl(firstCoin, secondCoin, days)).then((dataG) => {
-            setError(false);
             setCoinsGraphicList([...dataG]);
-        }).catch(() => setError(true));
+        }).catch(() => showToasts());
         if (updateData) {
             setUpdateData(false);
         }
@@ -68,14 +69,14 @@ export default function App() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <ToastManager />
             <StatusBar
                 backgroundColor='gray'
                 barStyle='light-content' />
             <CurrentPrice coin={queryCoin} days={days} />
-                <HistoryGraphic
-                    coin={queryCoin}
-                    updateData={updateData}
-                    infoDataGraphic={coinsGraphicList} />
+            <HistoryGraphic
+                updateData={updateData}
+                infoDataGraphic={coinsGraphicList} />
             <CoinsList
                 days={days}
                 updateDay={updateDay}
@@ -84,7 +85,7 @@ export default function App() {
                 coinsList={coinsList} />
             <QuotationsList
                 updateSearching={updateSearching}
-                listTransactions={coinsList} />
+                coinsList={coinsList} />
         </SafeAreaView>
     );
 }

@@ -12,15 +12,17 @@ export default function HistoryGraphic(props) {
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => setSpinner(false), 1000);
-        if (props.coin.includes('BTC')){
-            setDecimalPlaces(0);
-        } else if (props.coin.includes('ETH')){
+    }, [props.updateData]);
+    // Alterando as casas decimais, se o número for grande
+    useEffect(() => {
+        if (props.infoDataGraphic[0] > 10 && props.infoDataGraphic[0] < 100){
             setDecimalPlaces(2);
-        } 
-        else {
+        } else if (props.infoDataGraphic[0] >= 100) {
+            setDecimalPlaces(0); 
+        } else {
             setDecimalPlaces(4);
         }
-    }, [props.updateData]);
+    }, [props.infoDataGraphic]);
     return (
         <View>
             {spinner ?
