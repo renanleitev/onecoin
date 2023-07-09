@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     textButtonQuery: {
-        marginTop: 5,
         fontSize: 20,
         textTransform: 'uppercase',
         textAlign: 'center',
@@ -23,6 +22,14 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: "100%",
     },
+    shareContainer: {
+        alignItems: 'flex-end', 
+    }, 
+    shareButton: {
+        position: 'absolute',
+        bottom: 1,
+        right: 3, 
+    }
 });
 
 export default styles;

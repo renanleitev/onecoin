@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import React from "react";
+import { View, Text, Image} from "react-native";
 import styles from "./styles";
 
 export default function QuotationsItems(props) {
@@ -11,11 +11,11 @@ export default function QuotationsItems(props) {
                         style={styles.logoCoin}
                         source={require("../../img/dollar.png")}
                     />
-                    <Text style={styles.dayCotation}>{props.data}</Text>
+                    <Text style={styles.dayCotation}>{props.day}</Text>
                 </View>
             </View>
             <View style={styles.contextRight}>
-                <Text style={styles.price}>$ {props.valor}</Text>
+                <Text style={styles.price}>$ {props.value}</Text>
             </View>
         </View>
     )

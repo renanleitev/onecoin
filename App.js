@@ -5,7 +5,8 @@ import {
     Platform,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import ToastManager, { Toast } from 'toastify-react-native';
+import ToastManager from 'toastify-react-native';
+import { showToasts } from './src/services/showToasts';
 import CurrentPrice from './src/components/CurrentPrice';
 import HistoryGraphic from './src/components/HistoryGraphic';
 import CoinsList from './src/components/CoinsList';
@@ -28,16 +29,16 @@ export default function App() {
     const [secondCoin, setSecondCoin] = useState(defaultSecondCoin);
     // Moeda para consulta
     const queryCoin = `${firstCoin}-${secondCoin}`;
+    // Moeda para o título do gráfico
+    const [queryCoinTitle, setQueryCoinTitle] = useState(queryCoin);
     // Para armazenar o histórico da moeda e exibir em um gráfico
     const [coinsGraphicList, setCoinsGraphicList] = useState([0]);
     // Quantidade de dias que será exibido no gráfico (default: 7)
     const [days, setDays] = useState(defaultDays);
+    // Quantidade de dias no título do gráfico
+    const [daysTitle, setDaysTitle] = useState(defaultDays);
     // Se deve ou não realizar a consulta na API
     const [updateData, setUpdateData] = useState(true);
-    // Para exibir mensagem de erro
-    const showToasts = () => {
-        Toast.error('Consulta inválida');
-    }
     // Para atualizar o tipo da primeira moeda
     function updateFirstCoin(coin) {
         setFirstCoin(coin);
@@ -52,16 +53,28 @@ export default function App() {
     }
     // Para realizar a pesquisa
     function updateSearching(boolean) {
-        setUpdateData(boolean);
+        if (days > 360 || days < 3){
+            showToasts('Nº de dias inválido');
+        } else {
+            setDaysTitle(days);
+            setQueryCoinTitle(queryCoin);
+            setUpdateData(boolean);
+        }
+    }
+    // Em caso de erro na consulta
+    function errorApi(){
+        showToasts('Consulta inválida'); 
+        setCoinsList([]);
+        setCoinsGraphicList([0]);
     }
     // Para atualizar os dados da moeda e o gráfico
     useEffect(() => {
         getCoins(getUrl(firstCoin, secondCoin, days)).then((data) => {
             setCoinsList(data);
-        }).catch(() => showToasts());
+        }).catch(errorApi);
         getCoinsGraphic(getUrl(firstCoin, secondCoin, days)).then((dataG) => {
             setCoinsGraphicList([...dataG]);
-        }).catch(() => showToasts());
+        }).catch(errorApi);
         if (updateData) {
             setUpdateData(false);
         }
@@ -73,7 +86,7 @@ export default function App() {
             <StatusBar
                 backgroundColor='gray'
                 barStyle='light-content' />
-            <CurrentPrice coin={queryCoin} days={days} />
+            <CurrentPrice coin={queryCoinTitle} days={daysTitle} />
             <HistoryGraphic
                 updateData={updateData}
                 infoDataGraphic={coinsGraphicList} />
@@ -84,6 +97,7 @@ export default function App() {
                 updateSecondCoin={updateSecondCoin}
                 coinsList={coinsList} />
             <QuotationsList
+                coin={queryCoin}
                 updateSearching={updateSearching}
                 coinsList={coinsList} />
         </SafeAreaView>
