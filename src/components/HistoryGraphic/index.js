@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Dimensions, ActivityIndicator } from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import styles from "./styles";
 
 export default function HistoryGraphic(props) {
     // Para definir quantas casas decimais tem no eixo y
@@ -11,22 +12,19 @@ export default function HistoryGraphic(props) {
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => setSpinner(false), 1000);
-    }, [props.days, props.coin]);
-    // Definindo as casas decimais no eixo y, por tipo de moeda
-    useEffect(() => {
-        switch (props.coin) {
-            case 'BTC-BRL':
-                setDecimalPlaces(0);
-                break;
-            default:
-                setDecimalPlaces(4);
-                break;
+        if (props.coin.includes('BTC')){
+            setDecimalPlaces(0);
+        } else if (props.coin.includes('ETH')){
+            setDecimalPlaces(2);
+        } 
+        else {
+            setDecimalPlaces(4);
         }
-    }, [props.coin]);
+    }, [props.updateData]);
     return (
         <View>
             {spinner ?
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <View style={styles.containerLoading}>
                     <ActivityIndicator size="large" color="#fff" />
                 </View> :
                 <LineChart
@@ -60,9 +58,6 @@ export default function HistoryGraphic(props) {
                         backgroundGradientTo: 'black',
                         fillShadowGradient: 'white',
                         fillShadowGradientOpacity: 1,
-                        // propsForLabels: {
-                        //     fontSize:9, // para mudar a fonte dos labels (eixo x e y)
-                        // }
                     }}
                     bezier
                 />

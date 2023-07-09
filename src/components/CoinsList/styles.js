@@ -7,23 +7,19 @@ const styles = StyleSheet.create({
         paddingVertical: 15, 
         justifyContent: 'space-evenly',  
     },
-    buttonQuery: {
-        width: 50,
-        height: 30,
-        backgroundColor: 'gray',
+    inputQuery: {
+        padding: 10,
+        backgroundColor: 'white',
         borderRadius: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
+        textAlign: "center",
     },
-    textButtonQuery: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 12,
-        textTransform: 'uppercase',
+    buttonStyle:{
+        borderRadius: 50,
+        width: 100,
     },
-    listQuotationBitcoins:{
-        paddingTop: 10,
-        width: "100%",
+    dropdownStyle:{
+        borderRadius: 10,
+        width: 100,
     },
 });
 

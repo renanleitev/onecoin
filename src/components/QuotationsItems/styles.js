@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
     },
-    logoBitcoin: {
+    logoCoin: {
         width: 40,
         height: 40,
         marginLeft: 2,
