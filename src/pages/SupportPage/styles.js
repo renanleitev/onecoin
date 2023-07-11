@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+const spaceBetween = 40;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -13,22 +15,35 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',  
         backgroundColor: '#fff',
         marginLeft: '2.5%',
-        marginBottom: 20,
+        marginBottom: 10,
         borderRadius: 10,
         padding: 10,
     },
     questionText: {
         fontWeight: 'bold',
     },
+    expandAnswer: {
+        fontSize: 16,
+    },
     contextLeft: {
         alignItems: 'flex-start',
-        marginRight: 100
+        marginRight: spaceBetween,
+        width: '70%'
     },
     contextRight: {
         alignItems: 'flex-end',
-        marginLeft: 100
+        marginLeft: spaceBetween,
+        alignSelf: 'center',
     },
-    answerContainer: {},
+    answerContainer: {
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',  
+        backgroundColor: '#fff',
+        marginLeft: '2.5%',
+        borderRadius: 10,
+        padding: 10,
+    },
     answerText: {}
 });
 

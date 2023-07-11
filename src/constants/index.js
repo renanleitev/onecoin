@@ -4,6 +4,39 @@ export const defaultSecondCoin = 'BRL';
 
 export const defaultDays = 7;
 
+// FAQ = ID da primeira pergunta começa em 0
+export const questionsAndAnswers = [{
+    id: 0,
+    question: 'Como funciona o aplicativo?',
+    answer: 'Você deve selecionar uma moeda de origem e uma moeda de destino e, em seguida, digitar quantos dias você deseja mostrar de histórico. O resultado será exibido na tela, em um gráfico.'
+},
+{
+    id: 1,
+    question: 'Posso escolher a moeda de origem e a moeda de destino?',
+    answer: 'Vocé pode escolher a moeda de origem e a moeda de destino. Por padrão, o aplicativo vem pré-definido para USD e BRL.'
+},
+{
+    id: 2,
+    question: 'Qual o limite mínimo e máximo de dias que eu posso escolher?',
+    answer: 'Você pode escolher entre 3 e 360 dias. Por padrão, o aplicativo vem pré-definido para 7 dias.'
+},
+{
+    id: 3,
+    question: 'Posso exportar o histórico?',
+    answer: 'Você pode exportar o histórico em uma planilha Excel. Basta clicar no botão de compartilhar, ao lado de pesquisar.'
+}, 
+{
+    id: 4,
+    question: 'Algumas consultas dão erro. Como posso resolver isso?',
+    answer: 'Infelizmente algumas conversões não são suportadas. Não é possível resolver esse problema no momento.'
+}, 
+{
+    id: 5,
+    question: 'Não aparece nada no gráfico nem na lista de resultados.',
+    answer: 'É necessário uma conexão de internet para poder acessar os resultados. Caso o problema persista, entre em contato conosco.'
+}, 
+];
+
 export const currencies = [
     "AED",
     "AFN",
