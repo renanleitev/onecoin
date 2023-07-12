@@ -20,9 +20,10 @@ import {
     defaultDays
 } from '../../constants';
 import getFlagEmoji from '../../services/getFlagEmoji';
+import LowBarAds from '../../components/LowBarAds';
 import styles from './styles';
 
-const OneCoin = ({navigation}) => {
+const OneCoin = ({ navigation }) => {
     // Para armazenar o histórico de variação da moeda
     const [coinsList, setCoinsList] = useState([]);
     // Primeira moeda. Por padrão, a opção escolhida é dolar
@@ -103,11 +104,11 @@ const OneCoin = ({navigation}) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.buttonNavigationContainer}>
                 <Button
-                title='?'
-                color={'black'}
-                onPress={() =>
-                    navigation.navigate('Support')
-                }/>
+                    title='?'
+                    color={'black'}
+                    onPress={() =>
+                        navigation.navigate('Support')
+                    } />
             </View>
             <ToastManager />
             <StatusBar
@@ -130,6 +131,7 @@ const OneCoin = ({navigation}) => {
                 flags={flags}
                 updateSearching={updateSearching}
                 coinsList={coinsList} />
+            <LowBarAds/>
         </SafeAreaView>
     );
 }

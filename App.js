@@ -1,13 +1,9 @@
-import {
-    StyleSheet,
-    Platform,
-    SafeAreaView
-} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import OneCoin from './src/pages/OneCoin';
 import SupportPage from './src/pages/SupportPage';
+import 'expo-dev-client';
 
 export default function App() {
     // Para realizar a navegação pelo aplicativo
@@ -22,12 +18,3 @@ export default function App() {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'black',
-        alignItems: 'center',
-        paddingTop: Platform.OS === 'android' ? 40 : 0,
-    },
-});

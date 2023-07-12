@@ -1,0 +1,5 @@
+Just had this same problem.
+
+Check your app.json and look for the field expo.extra.eas.projectId and delete it.
+Now try to run your build again, a new projectId will be generated.
+This seems to have worked for me, hope it helps.
