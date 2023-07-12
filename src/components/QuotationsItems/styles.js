@@ -12,11 +12,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
     },
-    logoCoin: {
-        width: 40,
-        height: 40,
-        marginLeft: 2,
-    },
     boxLogo: {
         flexDirection: 'row',
         alignItems: 'center',

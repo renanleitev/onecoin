@@ -4,22 +4,33 @@ import {
     TextInput
 } from "react-native";
 import SelectDropdown from 'react-native-select-dropdown';
-import { currencies, defaultFirstCoin, defaultSecondCoin } from "../../constants";
+import {
+    defaultFirstFlag,
+    defaultSecondFlag,
+    defaultFirstCoin,
+    defaultSecondCoin,
+} from "../../constants";
+import getFlagEmoji from "../../services/getFlagEmoji";
+import getCurrencyWithFlag from "../../services/getCurrencyWithFlag";
 import styles from "./styles";
 
 export default function CoinsList(props) {
-    const [defaultFirstText, setDefaultFirstText] = useState(defaultFirstCoin);
-    const [defaultSecondText, setDefaultSecondText] = useState(defaultSecondCoin);
+    const [defaultFirstOption, setDefaultFirstOption] = useState(`${getFlagEmoji(defaultFirstFlag)} ${defaultFirstCoin}`);
+    const [defaultSecondOption, setDefaultSecondOption] = useState(`${getFlagEmoji(defaultSecondFlag)} ${defaultSecondCoin}`);
+    const currenciesWithFlag = getCurrencyWithFlag();
     return (
         <View style={styles.filters}>
             <SelectDropdown
-                data={currencies}
+                data={currenciesWithFlag}
                 buttonStyle={styles.buttonStyle}
                 dropdownStyle={styles.dropdownStyle}
-                defaultButtonText={defaultFirstText}
+                defaultButtonText={defaultFirstOption}
                 onSelect={(selectedItem) => {
-                    props.updateFirstCoin(selectedItem);
-                    setDefaultFirstText(selectedItem);
+                    // Removendo o emoji de bandeira e obtendo a sigla da moeda
+                    const coin = selectedItem.substring(selectedItem.indexOf(" ") + 1);
+                    props.updateFirstCoin(coin);
+                    props.updateFirstFlag(selectedItem.substring(0, selectedItem.indexOf(" ")));
+                    setDefaultFirstOption(selectedItem);
                 }}
                 buttonTextAfterSelection={(selectedItem) => {
                     return selectedItem;
@@ -29,13 +40,16 @@ export default function CoinsList(props) {
                 }}
             />
             <SelectDropdown
-                data={currencies}
+                data={currenciesWithFlag}
                 buttonStyle={styles.buttonStyle}
                 dropdownStyle={styles.dropdownStyle}
-                defaultButtonText={defaultSecondText}
+                defaultButtonText={defaultSecondOption}
                 onSelect={(selectedItem) => {
-                    props.updateSecondCoin(selectedItem);
-                    setDefaultSecondText(selectedItem);
+                    // Removendo o emoji de bandeira e obtendo a sigla da moeda
+                    const coin = selectedItem.substring(selectedItem.indexOf(" ") + 1);
+                    props.updateSecondCoin(coin);
+                    props.updateSecondFlag(selectedItem.substring(0, selectedItem.indexOf(" ")));
+                    setDefaultSecondOption(selectedItem);
                 }}
                 buttonTextAfterSelection={(selectedItem) => {
                     return selectedItem

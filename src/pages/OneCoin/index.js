@@ -19,6 +19,7 @@ import {
     defaultSecondCoin,
     defaultDays
 } from '../../constants';
+import getFlagEmoji from '../../services/getFlagEmoji';
 import styles from './styles';
 
 const OneCoin = ({navigation}) => {
@@ -28,10 +29,18 @@ const OneCoin = ({navigation}) => {
     const [firstCoin, setFirstCoin] = useState(defaultFirstCoin);
     // Segunda moeda. Por padrão, a opção escolhida é real
     const [secondCoin, setSecondCoin] = useState(defaultSecondCoin);
+    // Primeira flag padrão (US)
+    const [firstFlag, setFirstFlag] = useState(getFlagEmoji('US'));
+    // Segunda flag padrão (BR)
+    const [secondFlag, setSecondFlag] = useState(getFlagEmoji('BR'));
     // Moeda para consulta
     const queryCoin = `${firstCoin}-${secondCoin}`;
     // Moeda para o título do gráfico
     const [queryCoinTitle, setQueryCoinTitle] = useState(queryCoin);
+    // Flags para exibir na lista de resultados
+    const queryFlags = `${firstFlag}/${secondFlag}`;
+    // Flags, com o resultado da consulta (primeira flag/segunda flag)
+    const [flags, setFlags] = useState(queryFlags);
     // Para armazenar o histórico da moeda e exibir em um gráfico
     const [coinsGraphicList, setCoinsGraphicList] = useState([0]);
     // Quantidade de dias que será exibido no gráfico (default: 7)
@@ -48,6 +57,14 @@ const OneCoin = ({navigation}) => {
     function updateSecondCoin(coin) {
         setSecondCoin(coin);
     }
+    // Para atualizar a bandeira da primeira moeda
+    function updateFirstFlag(flag) {
+        setFirstFlag(flag);
+    }
+    // Para atualizar a bandeira da segunda moeda
+    function updateSecondFlag(flag) {
+        setSecondFlag(flag);
+    }
     // Para atualizar a quantidade de dias
     function updateDay(number) {
         setDays(number);
@@ -59,6 +76,7 @@ const OneCoin = ({navigation}) => {
         } else {
             setDaysTitle(days);
             setQueryCoinTitle(queryCoin);
+            setFlags(queryFlags);
             setUpdateData(boolean);
         }
     }
@@ -104,9 +122,12 @@ const OneCoin = ({navigation}) => {
                 updateDay={updateDay}
                 updateFirstCoin={updateFirstCoin}
                 updateSecondCoin={updateSecondCoin}
+                updateFirstFlag={updateFirstFlag}
+                updateSecondFlag={updateSecondFlag}
                 coinsList={coinsList} />
             <QuotationsList
                 coin={queryCoin}
+                flags={flags}
                 updateSearching={updateSearching}
                 coinsList={coinsList} />
         </SafeAreaView>

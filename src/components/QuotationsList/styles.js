@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textTransform: 'uppercase',
         textAlign: 'center',
+        fontWeight: 'bold',
     },
     listQuotationCoins:{
         marginTop: 10,

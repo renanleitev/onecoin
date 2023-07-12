@@ -1,5 +1,9 @@
 import { StyleSheet } from "react-native";
 
+const spaceBetweenNameAndGithub = 5;
+
+const spaceBetweenGithubAndLinkedin = 10;
+
 const styles = StyleSheet.create({
     footer: {
         backgroundColor: 'white',
@@ -11,11 +15,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
     },
     github: {
-        paddingLeft: 5,
-        paddingRight: 10,
+        paddingLeft: spaceBetweenNameAndGithub,
+        paddingRight: spaceBetweenGithubAndLinkedin,
     },
     linkedin: {
-        paddingLeft: 10,
+        paddingLeft: spaceBetweenGithubAndLinkedin,
     },
     image: {
         width: 30,
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        padding: 5
+        padding: spaceBetweenNameAndGithub
     }
 });
 
