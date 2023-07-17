@@ -10,10 +10,40 @@ Aplicativo para testes, feito em React-Native, para visualizar a cotação do Do
 
     npx expo start
 
-
 ## Para rodar o projeto (WSL)
 
     npx expo start --tunnel
+
+## Para criar uma versão em aab (Play Store)
+
+    eas build --platform android
+
+## Para criar uma versão em apk (nativo)
+
+Modificar o arquivo eas.json:
+
+    {
+    "build": {
+        "preview": {
+        "android": {
+            "buildType": "apk"
+        }
+        },
+        "preview2": {
+        "android": {
+            "gradleCommand": ":app:assembleRelease"
+        }
+        },
+        "preview3": {
+        "developmentClient": true
+        },
+        "production": {}
+    }
+    }
+
+Rodar o comando:
+
+    eas build -p android --profile preview
 
 ## Para reiniciar o projeto
 
@@ -23,7 +53,8 @@ Aplicativo para testes, feito em React-Native, para visualizar a cotação do Do
 
     https://docs.awesomeapi.com.br/api-de-moedas
 
-## TODO
+## Links
 
-1. Implementar gráfico de variação
-2. Adicionar suporte a outras moedas
+Expo Docs:
+
+    https://docs.expo.dev/build/setup/

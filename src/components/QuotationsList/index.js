@@ -34,8 +34,8 @@ export default function QuotationsList(props) {
                 renderItem={({ item }) => {
                     return <QuotationsItems
                         flags={props.flags}
-                        coin={props.coin}
                         value={item.value}
+                        info={item.info}
                         day={item.id} />;
                 }}
             />

@@ -127,7 +127,7 @@ const OneCoin = ({ navigation }) => {
                 updateSecondFlag={updateSecondFlag}
                 coinsList={coinsList} />
             <QuotationsList
-                coin={queryCoin}
+                coin={queryCoinTitle}
                 flags={flags}
                 updateSearching={updateSearching}
                 coinsList={coinsList} />

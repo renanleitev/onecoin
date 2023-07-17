@@ -25,15 +25,13 @@ const styles = StyleSheet.create({
         width: '60%',
         alignItems: 'flex-end',
     },
-    dayCotation: {
+    textCotation: {
         fontSize: 16,
         paddingLeft: 4,
         fontWeight: 'bold',
     },
-    price: {
-        fontSize: 16,
+    detailsContent: {
         paddingLeft: 4,
-        fontWeight: 'bold',
     }
 });
 

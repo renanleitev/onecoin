@@ -2,7 +2,7 @@
   "expo": {
     "name": "OneCoin",
     "slug": "OneCoin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon-for-cambio.png",
     "userInterfaceStyle": "light",
@@ -34,6 +34,6 @@
     }
   },
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-1805980343595146~8915847002"
+    "android_app_id": "ca-app-pub-1805980343595146~3693032802"
   }
 }

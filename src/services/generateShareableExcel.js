@@ -19,11 +19,27 @@ export const generateShareableExcel = async (coinsList, coin) => {
         worksheet.columns = [
           { header: 'Moeda', key: 'moeda', width: 10 },
           { header: 'Data', key: 'data', width: 12 },
-          { header: 'Valor', key: 'valor', width: 10, }
+          { header: 'Valor', key: 'valor', width: 10, },
+          { header: 'Máximo', key: 'max', width: 14, },
+          { header: 'Mínimo', key: 'min', width: 14, },
+          { header: 'Variação', key: 'var', width: 16, },
+          { header: 'Variação (%)', key: 'varPct', width: 18, },
+          { header: 'Compra', key: 'compra', width: 14, },
+          { header: 'Venda', key: 'venda', width: 14, },
         ];
         // Para cada moeda, adiciona uma linha com os dados
         coinsList.forEach((item) => {
-          worksheet.addRow({ moeda: coin, data: item.id, valor: item.value });
+          worksheet.addRow({ 
+            moeda: coin, 
+            data: item.id, 
+            valor: item.value,
+            max: item.info['high'],
+            min: item.info['low'],
+            var: item.info['varBid'],
+            varPct: item.info['pctChange'],
+            compra: item.info['bid'],
+            venda: item.info['ask']
+           });
         });
         // Estilo da primeira linha da planilha
         worksheet.getRow(1).font = {
