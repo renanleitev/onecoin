@@ -45,6 +45,43 @@ Rodar o comando:
 
     eas build -p android --profile preview
 
+## Para criar uma versão da Play Store
+
+Modificar o arquivo eas.json:
+
+    {
+    "cli": {
+    "appVersionSource": "remote"
+    },
+    "build": {
+    "development": {
+        "developmentClient": true,
+        "distribution": "internal"
+    },
+    "preview": {
+        "distribution": "internal"
+    },
+    "production": {
+        "autoIncrement": true
+    }
+    },
+    "submit": {
+    "production": {}
+    }
+    }
+
+Rodar o comando: 
+
+    eas build --platform android
+
+## Para adicionar propaganda (Google Admob)
+
+Modificar o arquivo app.json (fora de expo), com o ID do app criado no Google Admob:
+
+    "react-native-google-mobile-ads": {
+        "android_app_id": "ca-app-pub-XXXXXX~XXXXXXXXX"
+    }
+
 ## Para reiniciar o projeto
 
     Bastar apertar a tecla 'r' no terminal
