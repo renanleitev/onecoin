@@ -1,6 +1,6 @@
 # OneCoin
 
-Aplicativo para testes, feito em React-Native, para visualizar a cotação do Dolar (USD).
+Aplicativo feito em React-Native para visualizar a cotação de diversas moedas ao redor do mundo.
 
 ## Para baixar as dependências
 
@@ -14,13 +14,17 @@ Aplicativo para testes, feito em React-Native, para visualizar a cotação do Do
 
     npx expo start --tunnel
 
+## Para corrigir dependências desatualizadas
+
+    npx expo install --fix
+
 ## Para criar uma versão em aab (Play Store)
 
     eas build --platform android
 
 ## Para criar uma versão em apk (nativo)
 
-Modificar o arquivo eas.json:
+Modificar o arquivo `eas.json`:
 
     {
     "build": {
@@ -47,7 +51,7 @@ Rodar o comando:
 
 ## Para criar uma versão da Play Store
 
-Modificar o arquivo eas.json:
+Modificar o arquivo `eas.json`:
 
     {
     "cli": {
@@ -76,7 +80,7 @@ Rodar o comando:
 
 ## Para adicionar propaganda (Google Admob)
 
-Modificar o arquivo app.json (fora de expo), com o ID do app criado no Google Admob:
+Modificar o arquivo `app.json`, com o ID do app criado no Google Admob:
 
     "react-native-google-mobile-ads": {
         "android_app_id": "ca-app-pub-XXXXXX~XXXXXXXXX"

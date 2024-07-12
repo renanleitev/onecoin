@@ -1,7 +1,8 @@
 import {
     StatusBar,
     SafeAreaView,
-    Button,
+    TouchableOpacity,
+    Text,
     View
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
@@ -73,7 +74,7 @@ const OneCoin = ({ navigation }) => {
     // Para realizar a pesquisa
     function updateSearching(boolean) {
         if (days > 360 || days < 3) {
-            showToasts('Nº de dias inválido');
+            showToasts('Número de dias inválido');
         } else {
             setDaysTitle(days);
             setQueryCoinTitle(queryCoin);
@@ -103,12 +104,14 @@ const OneCoin = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.buttonNavigationContainer}>
-                <Button
-                    title='?'
-                    color={'black'}
-                    onPress={() =>
-                        navigation.navigate('Support')
-                    } />
+                <TouchableOpacity 
+                    style={{ marginTop: 10 }} 
+                    onPress={() => navigation.navigate('Support')}>
+                    <Text 
+                        style={{ color: 'white', fontSize: 20 }}>
+                            ?
+                    </Text>
+                </TouchableOpacity>
             </View>
             <ToastManager />
             <StatusBar
@@ -131,7 +134,6 @@ const OneCoin = ({ navigation }) => {
                 flags={flags}
                 updateSearching={updateSearching}
                 coinsList={coinsList} />
-            <LowBarAds/>
         </SafeAreaView>
     );
 }
