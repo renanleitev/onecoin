@@ -21,7 +21,6 @@ import {
     defaultDays
 } from '../../constants';
 import getFlagEmoji from '../../services/getFlagEmoji';
-import LowBarAds from '../../components/LowBarAds';
 import styles from './styles';
 
 const OneCoin = ({ navigation }) => {

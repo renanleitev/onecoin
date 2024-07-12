@@ -20,6 +20,12 @@ Aplicativo feito em React-Native para visualizar a cotação de diversas moedas 
 
 ## Para criar uma versão em aab (Play Store)
 
+Instalar o `eas-cli`:
+
+    npm install -g eas-cli
+
+Criar a versão em `aab`:
+
     eas build --platform android
 
 ## Para criar uma versão em apk (nativo)
@@ -77,14 +83,6 @@ Modificar o arquivo `eas.json`:
 Rodar o comando: 
 
     eas build --platform android
-
-## Para adicionar propaganda (Google Admob)
-
-Modificar o arquivo `app.json`, com o ID do app criado no Google Admob:
-
-    "react-native-google-mobile-ads": {
-        "android_app_id": "ca-app-pub-XXXXXX~XXXXXXXXX"
-    }
 
 ## Para reiniciar o projeto
 
