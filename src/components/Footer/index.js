@@ -18,7 +18,7 @@ export default function Footer() {
                     </View>
                 </Text>
             </View>
-            <Text>© 2023 - Todos os direitos reservados</Text>
+            <Text>© 2025 - Todos os direitos reservados</Text>
         </View>
     )
 }
